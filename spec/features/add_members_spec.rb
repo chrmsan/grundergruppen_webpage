@@ -6,7 +6,7 @@ feature 'Adding a member' do
 		visit '/'
 		click_link "New Member"
 		fill_in "Name", with: "Johnny Bravo"
-		attach_file('Profile Picture', "spec/files/images/johnny_bravo.jpg")
+		attach_file('Image', "spec/files/images/johnny_bravo.jpg")
 		fill_in "Company Name", with: "Bravo Inc."
 		fill_in "Company Website", with: "www.bravo.co"
 		click_button "Add Member"
