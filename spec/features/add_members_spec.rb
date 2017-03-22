@@ -4,7 +4,7 @@ feature 'Adding a member' do
 
 	scenario 'can add a member to the index page' do
 		visit '/'
-		click_link "Add Member"
+		click_link "New Member"
 		fill_in "Name", with: "Johnny Bravo"
 		attach_file('Profile Picture', "spec/files/images/johnny_bravo.jpg")
 		fill_in "Company Name", with: "Bravo Inc."
