@@ -13,6 +13,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'haml'
 gem 'haml-rails', '~> 0.9'
+gem 'simple_form'
 
 
 group :development, :test do
