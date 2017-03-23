@@ -14,7 +14,7 @@ feature 'Adding a member' do
 		expect(page).to have_css("img[src*='johnny_bravo.jpg']")
 	end
 
-	scenario 'needs and to create a member' do
+	scenario 'needs an image to create a member' do
 		visit '/'
 		click_link 'Add New Member'
 		fill_in "Name", with: "Johnny Bravo"
