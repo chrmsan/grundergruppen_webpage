@@ -25,8 +25,13 @@ class MembersController < ApplicationController
 	
 	def update  
 		@member = Member.find(params[:id])
-		@member.update(post_params)
-		redirect_to root_path
+		if @member.update(post_params)
+			flash[:success] = "Member Updated!" 
+			redirect_to root_path
+		else 
+			flash.now[:alert] = "Update failed. Please check the form."
+			render :edit
+		end
 	end  
 
 
