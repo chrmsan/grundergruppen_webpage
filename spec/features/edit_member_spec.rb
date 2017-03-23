@@ -4,7 +4,7 @@ feature 'Editing a Member' do
 	background do 
 		member = create(:member)
 		visit '/'
-		find(:xpath, "//a[contains(@href,'members/1/edit')]").click
+		find(:xpath, "//a[contains(@href,'members/1')]").click
 		click_link "Edit Member"
 	end
 
