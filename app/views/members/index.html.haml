@@ -1,3 +1,10 @@
 %h1 Gründergruppen
 
+-@members.each do |member|
+	= image_tag member.image.url(:thumb)
+	= member.name
+	= member.company_name
+	= member.company_webpage
+	= link_to "Edit Member"
+
 = link_to("New Member", new_member_path)
