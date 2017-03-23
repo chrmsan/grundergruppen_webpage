@@ -1,0 +1,10 @@
+= image_tag @member.image.url(:thumb)
+
+= simple_form_for @member do |f|
+	= f.input :name
+	= f.input :image
+	= f.input :company_name
+	= f.input :company_webpage
+	= f.button :submit
+
+=link_to "Cancel", root_path
