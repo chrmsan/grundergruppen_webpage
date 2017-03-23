@@ -19,6 +19,16 @@ class MembersController < ApplicationController
 		end
 	end
 
+	def edit
+		@member = Member.find(params[:id])
+	end
+	
+	def update  
+		@member = Member.find(params[:id])
+		@member.update(post_params)
+		redirect_to root_path
+	end  
+
 
 	private
 
