@@ -2,5 +2,5 @@
 	= image_tag member.image.url(:thumb)
 	= member.name
 	= member.company_name
-	= member.company_webpage
+	= link_to member.company_webpage, "http://#{member.company_webpage}", :target => "_blank"
 	= link_to "Edit Member", edit_member_path(member)
