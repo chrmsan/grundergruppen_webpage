@@ -1,5 +1,7 @@
 class MembersController < ApplicationController
 
+	before_action :set_member, only: [:edit, :update, :destroy]
+
 	def index
 		@members = Member.all
 	end
@@ -20,11 +22,9 @@ class MembersController < ApplicationController
 	end
 
 	def edit
-		@member = Member.find(params[:id])
 	end
 	
 	def update  
-		@member = Member.find(params[:id])
 		if @member.update(post_params)
 			flash[:success] = "Member Updated!" 
 			redirect_to root_path
@@ -35,7 +35,6 @@ class MembersController < ApplicationController
 	end  
 
 	def destroy
-		@member = Member.find(params[:id])
 		@member.destroy
 		flash[:success] = "Member has been deleted!"
 		redirect_to root_path
@@ -45,6 +44,10 @@ class MembersController < ApplicationController
 
 	def post_params
 		params.require(:member).permit(:name, :image, :company_name, :company_webpage)
+	end
+
+	def set_member
+		@member = Member.find(params[:id])
 	end
 
 end
