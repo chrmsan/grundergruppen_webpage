@@ -34,6 +34,12 @@ class MembersController < ApplicationController
 		end
 	end  
 
+	def destroy
+		@member = Member.find(params[:id])
+		@member.destroy
+		flash[:success] = "Member has been deleted!"
+		redirect_to root_path
+	end
 
 	private
 
