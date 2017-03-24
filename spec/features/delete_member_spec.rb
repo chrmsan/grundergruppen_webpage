@@ -9,7 +9,7 @@ feature 'Deleting a Member' do
 
 	scenario "Can delete a member" do
 		click_link "Delete Member"
-		expect(page).to have_content("Member has deleted!")
+		expect(page).to have_content("Member has been deleted!")
 		expect(page).to_not have_content("Johnny Bravo")
 	end
 end
