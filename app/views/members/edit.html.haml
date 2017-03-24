@@ -8,3 +8,5 @@
 	= f.button :submit
 
 =link_to "Cancel", root_path
+|
+= link_to "Delete Member", member_path(@member), method: :delete, data: { confirm: "Are you sure you want to remove this member from this site?" }
