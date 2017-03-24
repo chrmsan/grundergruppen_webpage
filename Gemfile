@@ -16,6 +16,7 @@ gem 'haml-rails', '~> 0.9'
 gem 'simple_form'
 gem 'paperclip'
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'devise'
 
 
 group :development, :test do
