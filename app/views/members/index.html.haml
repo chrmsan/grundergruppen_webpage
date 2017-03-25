@@ -3,6 +3,8 @@
 	= member.name
 	= member.company_name
 	= link_to member.company_webpage, "http://#{member.company_webpage}", :target => "_blank"
-	= link_to "Edit Member", edit_member_path(member)
+	- if user_signed_in?
+		= link_to "Edit Member", edit_member_path(member)
 
--# %iframe{:allowfullscreen => "", :style => "border:0", :frameborder => "0", :height => "450", :width => "600", :src => "https://www.google.com/maps/embed/v1/place?key=AIzaSyCEMADYcS9HKUGj_FAaL5hE4kWIEnozGSQ&q=Ingeniørenes+Hus+Møtesenter"}
+%br
+= render 'map'
