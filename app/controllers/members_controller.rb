@@ -1,5 +1,5 @@
 class MembersController < ApplicationController
-
+	before_action :authenticate_user!, except: [:index]
 	before_action :set_member, only: [:edit, :update, :destroy]
 
 	def index
