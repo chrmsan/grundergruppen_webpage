@@ -16,7 +16,7 @@ class MembersController < ApplicationController
 			flash[:success] = "A member has been added."
 			redirect_to root_path
 		else
-			flash[:alert] = "You need an image to create a member."
+			flash[:alert] = "You need both a name and an image to create a member."
 			render :new
 		end
 	end
