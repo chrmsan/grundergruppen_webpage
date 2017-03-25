@@ -1,9 +1,17 @@
--@members.each do |member|
-	= image_tag member.image.url(:thumb)
-	= member.name
-	= link_to member.company_name, "http://#{member.company_webpage}", :target => "_blank"
-	- if user_signed_in?
-		= link_to "Edit Member", edit_member_path(member)
+-# -@members.each do |member|
+-# 	= image_tag member.image.url(:thumb)
+-# 	= member.name
+-# 	= link_to member.company_name, "http://#{member.company_webpage}", :target => "_blank"
+-# 	- if user_signed_in?
+-# 		= link_to "Edit Member", edit_member_path(member)
 
-%br
-= render 'map'
+-# %br
+-# = render 'map'
+
+-@members.each do |member|
+	.col-sm-3
+		%img.img-circle.img-responsive.img-center{:alt => "", :src => "#{member.image.url(:thumb)}"}/
+		%h2=member.name
+		%p=link_to member.company_name, "http://#{member.company_webpage}", :target => "_blank"
+		- if user_signed_in?
+			%p= link_to "Edit Member", edit_member_path(member)
