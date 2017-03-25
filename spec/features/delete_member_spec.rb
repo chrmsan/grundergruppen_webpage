@@ -2,7 +2,9 @@ require 'rails_helper'
 
 feature 'Deleting a Member' do
 	background do 
+		user = create(:user)
 		member = create(:member)
+		sign_in_with(user)
 		visit '/'
 		find("a[href='#{edit_member_path(member)}']").click
 	end

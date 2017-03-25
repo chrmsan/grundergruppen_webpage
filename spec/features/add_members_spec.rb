@@ -1,9 +1,13 @@
 require 'rails_helper'
 
 feature 'Adding a member' do
+	
+	background do 
+		user = create(:user)
+		sign_in_with(user)
+	end
 
 	scenario 'can add a member to the index page' do
-		visit '/'
 		click_link "Add New Member"
 		fill_in "Name", with: "Johnny Bravo"
 		attach_file('Image', "spec/files/images/johnny_bravo.jpg")
@@ -15,7 +19,6 @@ feature 'Adding a member' do
 	end
 
 	scenario 'needs an image to create a member' do
-		visit '/'
 		click_link 'Add New Member'
 		fill_in "Name", with: "Johnny Bravo"
 		fill_in "Company name", with: "Bravo Inc."
