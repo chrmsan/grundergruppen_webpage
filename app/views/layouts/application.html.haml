@@ -1,38 +1,90 @@
 !!!
-%html
+%html{:lang => "en"}
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title Grundergruppen
-    = csrf_meta_tags
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %meta{:content => "", :name => "description"}/
+    %meta{:content => "", :name => "author"}/
+    %title Gründergruppen
+    / Bootstrap Core CSS
+    %link{:href => "https://blackrockdigital.github.io/startbootstrap-business-frontpage/css/bootstrap.min.css", :rel => "stylesheet"}/
+    / Custom CSS
+    %link{:href => "https://blackrockdigital.github.io/startbootstrap-business-frontpage/css/business-frontpage.css", :rel => "stylesheet"}/
+    / HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    / WARNING: Respond.js doesn't work if you view the page via file://
+    /[if lt IE 9]
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   %body
-    %nav.navbar.navbar-default
-      .navbar-container
+    / Navigation
+    %nav.navbar.navbar-inverse.navbar-fixed-top{:role => "navigation"}
+      .container
+        / Brand and toggle get grouped for better mobile display
         .navbar-header
-          %button.navbar-toggle.collapsed{"data-target" => "#bs-navbar-collapse-1", "data-toggle" => "collapse", type: "button"}
-            %span.sr-only Toggle Navigation
+          %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only Toggle navigation
             %span.icon-bar
             %span.icon-bar
-          .navbar-brand= link_to "Gründergruppen", root_path
-        %p - En faggruppe under Tekna Oslo
-        .collapse.navbar-collapse#bs-navbar-collapse-1
-          %ul.nav.navbar-nav.navbar-right
-            - if user_signed_in?
-              %li
-                = link_to "ADMIN Logout", destroy_user_session_path, method: :delete
-              %li
-                = link_to "Add New Member", new_member_path
+            %span.icon-bar
+          %a.navbar-brand{:href => root_path} Gründergruppen
+        / Collect the nav links, forms, and other content for toggling
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          %ul.nav.navbar-nav
             %li
-              = link_to "About", '#'
+              %a{:href => "#"} Om Gründergruppen
             %li
-              = link_to "Members", '#'
+              %a{:href => "#"} Medlemmene
             %li
-              = link_to "Contact", '#'
-    -flash.each do |name, msg|
-      = content_tag :div, msg, class: [:alert, alert_for(name)]
-    = yield
-    %br
-    - if !user_signed_in?
-      = link_to('Admin', new_user_session_path)
-
+              %a{:href => "#"} Kontakt
+        / /.navbar-collapse
+      / /.container
+    / Image Background Page Header
+    / Note: The background image is set within the business-casual.css file.
+    %header.business-header
+      .container
+        .row
+          .col-lg-12
+            %h1.tagline Gründergruppen <i> - en faggruppe under Tekna Oslo Avdeling</i>
+    / Page Content
+    .container
+      %hr/
+      .row
+        .col-sm-12
+          %h2 Om Gründergruppen
+          %p Gründergruppen er en faggruppe under Tekna Oslo avd. Gründergruppen fungerer som et nettverk for de som er, eller vil blir gründere for å realiserer sine idéer. 
+          %p Faggruppen gir tilbud til Tekna Oslos-medlemmener faglig påfyll om entreprenørskap gjennom kurs og presentasjoner. Medlemmene av Gründergruppen har mulighet å benytte seg av kontorplass på Gründerkontoret i Ingeniørenes Hus.
+      / /.row
+      %hr/
+      .row
+        = yield
+      / /.row
+      %hr
+      .row
+        .col-sm-8
+          = render 'map'
+        .col-sm-4
+          %h2 Adresse
+          %address
+            %strong Tekna Oslo - Fagruppe Gründergruppen
+            = succeed "Kronprinsens gate 17" do
+              %br/
+            = succeed "0251 OSLO" do
+              %br/
+            %br/
+          %h3 Ønsker du kontorplass hos Gründergruppen?
+          %p Er du Tekna-medlem i Oslo og trenger gratis kontorplass for realisere din gründeridé? 
+          %p Ta kontakt (per epost) med sekretariatet til Tekna Oslo avd.; fortell oss om din idé og om hvorfor du trenger kontorplass på Gründerkontoret i Ingeniørenes Hus.
+          %address
+            %br/
+            %abbr{:title => "Email"} Epost:
+            %a{:href => "mailto:Anne.Julie.Bolstad@tekna.no"} Anne.Julie.Bolstad@tekna.no
+      %hr/
+    .container
+      / Footer
+    %footer
+      .row
+        .col-lg-12
+          - if !user_signed_in?
+            = link_to('Admin', new_user_session_path)
